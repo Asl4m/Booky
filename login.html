@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booky</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+    <style>
+    body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+}
+
+.background {
+  background-image:url("./images/luxury-furniture-living-room-set.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+
+ 
+}
+
+.content {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.search-form {
+  margin-top: 20px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 15px;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+            .i,.i1{
+                display: inline-block;
+            }
+            .i3,.i2{
+                margin-top: 10px;
+                display: block;
+                width: 100%;
+            }
+            .cbox{
+                display: inline-block;
+            }
+            .bton{
+                display: block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 150px;
+                background-color: grey;
+                margin-bottom: 5px;
+            }
+            .bton:hover{
+                background-color: green;
+            }
+      
+</style>
+</style>
+<body>
+    <div class="background">
+        <div class="content">
+            <h1 class="txt">Booky</h1>
+            <p>Enter your credentials!</p>
+            <form onsubmit="return validateForm()" id="checkin-form">
+                <input class="i" type="text" placeholder="First Name" id="first-name">
+                <input class="i1" type="text" placeholder="Last Name" id="last-name">
+                <input class="i2" type="text" placeholder="Email address" id="email">
+                <input class="i3" type="text" placeholder="Mobile no" id="mobile">
+                <div class="form-check">
+                    <input class="input-field" type="checkbox" id="terms-checkbox">
+                    <label class="form-check-label" for="terms-checkbox">I agree to the terms and conditions</label>
+                </div>
+                <button class="bton" type="submit">Submit</button>
+            </form>
+            <div class="alert alert-danger d-none" role="alert" id="terms-error">
+                Please agree to the terms and conditions.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("first-name").value;
+            var lastName = document.getElementById("last-name").value;
+            var email = document.getElementById("email").value;
+            var mobile = document.getElementById("mobile").value;
+            var termsCheckbox = document.getElementById("terms-checkbox").checked;
+
+            if (firstName.trim() === "") {
+                alert("Please enter your First Name.");
+                return false;
+            }
+
+            if (lastName.trim() === "") {
+                alert("Please enter your Last Name.");
+                return false;
+            }
+
+            if (email.trim() === "") {
+                alert("Please enter your Email address.");
+                return false;
+            }
+            var emailRegex = /\S+@\S+\.\S+/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid Email address.");
+                return false;
+            }
+
+            if (mobile.trim() === "") {
+                alert("Please enter your Mobile number.");
+                return false;
+            }
+            var mobileRegex = /^\d{10}$/;
+            if (!mobileRegex.test(mobile)) {
+                alert("Please enter a valid 10-digit Mobile number.");
+                return false;
+            }
+
+            if (!termsCheckbox) {
+                document.getElementById("terms-error").classList.remove("d-none");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
